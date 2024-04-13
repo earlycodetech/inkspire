@@ -14,7 +14,7 @@
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4>New Category</h4>
 
-                        <a href="{{ route('categories.create') }}" class="btn btn-dark btn-sm">
+                        <a href="{{ route('categories.index') }}" class="btn btn-dark btn-sm">
                             All Categories
                         </a>
                     </div>
