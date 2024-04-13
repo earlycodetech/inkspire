@@ -19,8 +19,12 @@
                                     <th scope="row"> Title </th>
                                     <th scope="row"> Date Created </th>
                                     <th scope="row"> Last Updated </th>
+                                    <th scope="row"> ... </th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <tr></tr>
+                            </tbody>
                         </table>
                     </div>
 
