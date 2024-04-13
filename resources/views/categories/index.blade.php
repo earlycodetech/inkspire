@@ -4,6 +4,11 @@
         <div class="container my-5">
             <div class="card border-0 shadow bg-white">
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success fw-bold text-center">
+                            {{ $message }}
+                        </div>
+                    @endif
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4>All Categories</h4>
 
@@ -26,14 +31,31 @@
                                 @forelse ($categories as $category)
                                     <tr>
                                         <td> {{ $category->title }} </td>
-                                        <td> 
-                                            {{ $category->created_at->format('M. jS, Y') }} 
-                                            &nbsp; 
-                                            &nbsp; 
+                                        <td>
+                                            {{ $category->created_at->format('M. jS, Y') }}
+                                            &nbsp;
+                                            &nbsp;
                                             {{ $category->created_at->format('h:i A') }}
                                         </td>
                                         <td> {{ $category->updated_at->diffForHumans() }} </td>
-                                        <td></td>
+                                        <td>
+                                            <div class="d-flex align-items-start gap-2 flex-wrap">
+                                                <a href="{{ route('categories.edit', ['category' => $category->id]) }}"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="fa-solid fa-edit"></i>
+                                                </a>
+
+                                                <form
+                                                    onsubmit="return confirm('Are you sure you want to DELETE this category?')"
+                                                    action="{{ route('categories.destroy', ['category' => $category->id]) }}"
+                                                    method="post">
+                                                    @csrf @method('DELETE')
+                                                    <button class="btn btn-danger btn-sm">
+                                                        <i class="fa-solid fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>

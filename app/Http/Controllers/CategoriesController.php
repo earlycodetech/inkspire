@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('categories.index', compact('categories')); 
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -32,10 +32,10 @@ class CategoriesController extends Controller
     {
         $validatedData  = $request->validate([
             'title' => "required|string|max:50|unique:categories,title"
-        ]); 
+        ]);
 
         $slug = Str::slug($validatedData['title'], '-');
-        
+
         Category::create([
             'title' => $validatedData['title'],
             'slug' => $slug
@@ -59,7 +59,12 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // $category = Category::find($id);
+        // $category = Category::where('id', '=', $id)->first();
+        // $category = Category::findOrFail(11);
+        $category = Category::where('id', '=', $id)->firstOrFail();
+
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -67,7 +72,19 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $validatedData  = $request->validate([
+            'title' => "required|string|max:50|unique:categories,title,id," . $id
+        ]);
+
+        $slug = Str::slug($validatedData['title'], '-');
+
+        Category::where('id', $id)->update([
+            'title' => $validatedData['title'],
+            'slug' => $slug
+        ]);
+
+        return back()->with('success', "Category Updated");
     }
 
     /**
@@ -75,6 +92,7 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Category::where('id', $id)->delete();
+        return back()->with('success', "Category Deleted");
     }
 }
