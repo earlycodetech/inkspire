@@ -5,7 +5,7 @@
             <div class="card border-0 shadow-sm bg-white">
                 <div class="card-header bg-white d-flex justify-content-between align-items-center">
                     <h5>All Books</h5>
-                    <a href="" class="btn btn-primary">
+                    <a href="{{ route('admin.books.create') }}" class="btn btn-primary">
                         New Book
                     </a>
                 </div>
