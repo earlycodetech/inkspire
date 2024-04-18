@@ -18,19 +18,19 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input type="text" name="title" id="title" class="form-control">
+                                <input type="text" name="title" value="{{ old('title') }}" id="title" class="form-control">
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="author" class="form-label">Author</label>
-                                <input type="text" name="author" id="author" class="form-control">
+                                <input type="text" name="author" value="{{ old('author') }}" id="author" class="form-control">
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="category" class="form-label">Category</label>
                                 <select name="category" id="category" class="form-select">
                                     @foreach ($categories as $item)
-                                        <option value="{{ $item->id }}">
+                                        <option value="{{ $item->id }}" {{ old('category') == $item->id ? 'selected' : '' }}>
                                              {{ $item->title }} 
                                         </option>
                                     @endforeach
