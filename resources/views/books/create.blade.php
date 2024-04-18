@@ -12,7 +12,8 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{ route('admin.books.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
