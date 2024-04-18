@@ -17,4 +17,17 @@ class BooksController extends Controller
         $categories = Category::all()->sortBy('title'); 
         return  view('books.create', compact('categories'));
     }
+
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'title' => "required",
+            'author' => "required",
+            'category' => "required",
+            'cover_image' => "required",
+            'file' => "required",
+        ]);
+        dd($request->input(), $request->file());
+    }
 }
