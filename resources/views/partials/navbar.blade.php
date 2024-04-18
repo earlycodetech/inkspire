@@ -16,10 +16,10 @@
                     </li>
     
                     <li class="nav-item">
-                        <a href="" class="nav-link"> Categories </a>
+                        <a href="{{ route('categories.index') }}" class="nav-link"> Categories </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link"> Write </a>
+                        <a href="{{ route('admin.books.create') }}" class="nav-link"> Write </a>
                     </li>
                 </ul>
     

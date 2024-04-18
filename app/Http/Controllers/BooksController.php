@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -13,6 +14,7 @@ class BooksController extends Controller
 
     public function create()
     {
-        return  view('books.create');
+        $categories = Category::all()->sortBy('title'); 
+        return  view('books.create', compact('categories'));
     }
 }
