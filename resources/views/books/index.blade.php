@@ -15,7 +15,7 @@
                         @forelse ($books as $book)
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <a href="#" class="nav-link">
-                                    <div class="card bg-white border-0 shadow-sm">
+                                    <div class="card bg-white border-0 shadow-sm h-100">
                                         <img src="{{ asset($book->cover_image) }}" alt="Cover" class="card-img-top rounded">
                                         <div class="card-body">
                                             <p class="fw-bold h5">
