@@ -12,9 +12,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('categories', CategoriesController::class);
+Route::resource('categories', CategoriesController::class)->middleware(['auth','admin.checker']);
 
 
-Route::get('books', [BooksController::class, 'index'])->name('admin.books.index');
-Route::get('books/create', [BooksController::class, 'create'])->name('admin.books.create');
-Route::post('books/create', [BooksController::class, 'store'])->name('admin.books.store');
+Route::get('books', [BooksController::class, 'index'])->middleware(['auth', 'admin.checker'])->name('admin.books.index');
+Route::get('books/create', [BooksController::class, 'create'])->middleware(['auth', 'admin.checker'])->name('admin.books.create');
+Route::post('books/create', [BooksController::class, 'store'])->middleware(['auth', 'admin.checker'])->name('admin.books.store');
