@@ -22,6 +22,9 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.books.create') }}" class="nav-link"> Write </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('contact.index') }}" class="nav-link"> Contact </a>
+                    </li>
                 </ul>
 
                 <form action="{{ route('guest.search') }}" method="get">
