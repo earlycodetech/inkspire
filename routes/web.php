@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [PagesController::class, "homepage"])->name('homepage');
 
+Route::get('our-categories', [PagesController::class, "categories"])->name('guest.categories.all');
+Route::get('categories/{slug}', [PagesController::class, "single_category"])->name('guest.categories.single');
+Route::get('search', [PagesController::class, 'search'])->name('guest.search');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
