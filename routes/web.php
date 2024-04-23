@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,4 @@ Route::resource('categories', CategoriesController::class)->middleware(['auth','
 Route::get('books', [BooksController::class, 'index'])->middleware(['auth', 'admin.checker'])->name('admin.books.index');
 Route::get('books/create', [BooksController::class, 'create'])->middleware(['auth', 'admin.checker'])->name('admin.books.create');
 Route::post('books/create', [BooksController::class, 'store'])->middleware(['auth', 'admin.checker'])->name('admin.books.store');
+Route::resource('contact', ContactController::class);
