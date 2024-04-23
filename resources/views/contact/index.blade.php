@@ -40,7 +40,8 @@
                                         </div>
                                         <div class="row m-5">
 
-                                            <div class="col md-2 mb-2">
+                                            <form method="POST" action="{{ route('contact.store') }}" class="col md-2 mb-2">
+                                                @csrf
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label fw-bolder">
                                                         Full Name
@@ -65,7 +66,7 @@
                                                 <button class="btn btn-outline-primary rounded-pill px-5">
                                                     Submit <i class="fa-solid fa-pencil"></i>
                                                 </button>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

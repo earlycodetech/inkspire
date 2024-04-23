@@ -23,4 +23,10 @@ Route::resource('categories', CategoriesController::class)->middleware(['auth','
 Route::get('books', [BooksController::class, 'index'])->middleware(['auth', 'admin.checker'])->name('admin.books.index');
 Route::get('books/create', [BooksController::class, 'create'])->middleware(['auth', 'admin.checker'])->name('admin.books.create');
 Route::post('books/create', [BooksController::class, 'store'])->middleware(['auth', 'admin.checker'])->name('admin.books.store');
-Route::resource('contact', ContactController::class);
+Route::resource('contact', ContactController::class)->except([
+    'create',
+    'update',
+    'edit',
+    'destroy',
+    'show'
+]);
